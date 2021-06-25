@@ -80,4 +80,14 @@ public class DateUtils {
         return localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY)).minusDays(1);
     }
 
+    /**
+     * 获取前index天 或者 后index天的日期
+     * @param daysToAdd 要添加的天数，可能为负数
+     * @return
+     */
+    public static String getBeforeDate(Integer daysToAdd) {
+        LocalDate needDate = LocalDate.now().plusDays(daysToAdd);
+        return needDate.format(FORMATTER_Y_M_D);
+    }
+
 }
