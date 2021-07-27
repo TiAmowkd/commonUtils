@@ -4,6 +4,7 @@ package com.wkd.project.common.crypto;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.util.Arrays;
 import java.util.Base64;
 
 /**
@@ -38,7 +39,7 @@ public class AesUtil {
             byte[] byteContent = data.getBytes("utf-8");
             byte[] result = cipher.doFinal(byteContent);
             return Base64.getEncoder().encodeToString(result);
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         return "";
     }
@@ -56,8 +57,8 @@ public class AesUtil {
             cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(IV.getBytes()));
             byte[] byteContent = Base64.getDecoder().decode(data);
             byte[] result = cipher.doFinal(byteContent);
-            return Base64.getEncoder().encode(result).toString();
-        } catch (Exception e) {
+            return Arrays.toString(Base64.getEncoder().encode(result));
+        } catch (Exception ignored) {
         }
         return "";
     }

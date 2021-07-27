@@ -52,12 +52,21 @@ public class DateUtils {
     }
 
     /**
-     * 获取当前日期
+     * 获取当前日期时间
      *
-     * @return 格式：yyyyMMdd
+     * @return 格式：yyyy-MM-dd HH:mm:ss
      */
     public static String getNowDate() {
-        return LocalDate.now().format(FORMATTER_YMD);
+        return getNowDate(FORMATTER_YMD_HMS);
+    }
+
+    /**
+     * 获取当前日期
+     *
+     * @return 格式：指定格式
+     */
+    public static String getNowDate(DateTimeFormatter dateTimeFormatter) {
+        return LocalDate.now().format(dateTimeFormatter);
     }
 
     /**
@@ -82,8 +91,9 @@ public class DateUtils {
 
     /**
      * 获取前index天 或者 后index天的日期
+     *
      * @param daysToAdd 要添加的天数，可能为负数
-     * @return
+     * @return 格式：yyyy-MM-dd
      */
     public static String getBeforeDate(Integer daysToAdd) {
         LocalDate needDate = LocalDate.now().plusDays(daysToAdd);

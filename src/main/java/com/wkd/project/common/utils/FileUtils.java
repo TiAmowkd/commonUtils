@@ -48,13 +48,10 @@ public class FileUtils {
      * 创建文件及其父目录，如果这个文件存在，直接返回这个文件
      *
      * @param file 文件对象
-     * @return 文件，若路径为 null，返回 null
+     * @return 文件
      * @throws IOException IO异常
      */
     public static File touch(File file) throws IOException {
-        if (null == file) {
-            return null;
-        }
         if (notExist(file)) {
             mkParentDirs(file);
             file.createNewFile();
@@ -78,6 +75,7 @@ public class FileUtils {
 
     /**
      * 获取文件内容
+     *
      * @param fileName
      * @return
      */
