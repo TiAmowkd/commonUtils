@@ -1,6 +1,8 @@
 package com.wkd.project.common.dto;
 
+import com.github.pagehelper.PageInfo;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,7 +18,19 @@ import java.util.List;
 public class PageResponseDTO<T> implements Serializable {
     private static final long serialVersionUID = -1852829979223997296L;
     private List<T> list;
-    private Long pageNumber;
+    private Integer pageNum;
+    private Integer pageSize;
+    private Integer totalPage;
     private Long total;
 
+    public static <T> PageResponseDTO<T> restPage(List<T> list) {
+        PageResponseDTO<T> responseDTO = new PageResponseDTO<>();
+        PageInfo<T> pageInfo = new PageInfo<T>(list);
+        BeanUtils.copyProperties(pageInfo, responseDTO);
+//        responseDTO.setList(pageInfo.getList());
+//        responseDTO.setPageNum(pageInfo.getPageNum());
+//        responseDTO.setPageSize(pageInfo.getPageSize());
+//        responseDTO.setTotal(pageInfo.getTotal());
+        return responseDTO;
+    }
 }
