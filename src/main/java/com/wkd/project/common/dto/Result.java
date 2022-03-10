@@ -50,12 +50,16 @@ public class Result<T> implements Serializable {
         return new Result<T>(ResultCode.SUCCESS.getCode(), message, data);
     }
 
-    public static Result<Void> info(int code, String message) {
-        return new Result<Void>(code, message);
+    public static <T> Result<T> error(T data) {
+        return new Result<T>(ResultCode.FAILED.getCode(), ResultCode.FAILED.getMessage(), data);
     }
 
-    public static Result<Void> info(ResultCode resultCode) {
-        return new Result<Void>(resultCode.getCode(), resultCode.getMessage());
+    public static <T> Result<T> info(int code, String message) {
+        return new Result<>(code, message);
+    }
+
+    public static <T> Result<T> info(ResultCode resultCode) {
+        return new Result<>(resultCode.getCode(), resultCode.getMessage());
     }
 
     public static <T> Result<T> info(int code, String message, T data) {

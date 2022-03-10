@@ -61,6 +61,28 @@ public class DateUtils {
     }
 
     /**
+     * LocalDateTime 转 Date
+     * Jdk8 后 不推荐使用 {@link Date} Date
+     *
+     * @param localDateTime /
+     * @return /
+     */
+    public static Date toDate(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    /**
+     * LocalDate 转 Date
+     * Jdk8 后 不推荐使用 {@link Date} Date
+     *
+     * @param localDate /
+     * @return /
+     */
+    public static Date toDate(LocalDate localDate) {
+        return toDate(localDate.atTime(LocalTime.now(ZoneId.systemDefault())));
+    }
+
+    /**
      * 获取当前日期
      *
      * @return 格式：指定格式

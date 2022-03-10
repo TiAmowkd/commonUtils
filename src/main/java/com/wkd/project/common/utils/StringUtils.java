@@ -14,7 +14,7 @@ public class StringUtils {
     /**
      * 空字符串
      */
-    private static final String NULL_STRING = "";
+    public static final String NULL_STRING = "";
 
     /**
      * * 判断一个字符串是否为空串

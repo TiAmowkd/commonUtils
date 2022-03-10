@@ -37,7 +37,9 @@ public enum ResultCode implements StatusCode, BusinessExceptionAssert {
     USER_ACCOUNT_NOT_EXIST(2007, "账号不存在"),
     USER_ACCOUNT_ALREADY_EXIST(2008, "账号已存在"),
     USER_ACCOUNT_USE_BY_OTHERS(2009, "账号下线"),
-    USER_NOT_NAME(2010, "用户名为空");
+    USER_NOT_NAME(2010, "用户名为空"),
+    USER_AUTH_ERROR(2011, "该账号无权限访问"),
+    ;
 
 
     private int code;
